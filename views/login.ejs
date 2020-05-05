@@ -1,0 +1,21 @@
+<!-- 登录页面 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include header.ejs %>
+    <title>登录</title>
+</head>
+
+<body>
+    <div class="form-box">
+        <form action="/users/login" method="POST">
+            <div>用户名：<input type="text" name="username" placeholder="请输入用户名..."></div>
+            <div>密码：<input type="password" name="password" placeholder="请输入密码..."></div>
+            <button class="subBut" type="submit">登录</button>
+        </form>
+        <div>没有账号，<a href="/regist">立即注册</a></div>
+    </div>
+</body>
+
+</html>

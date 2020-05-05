@@ -1,0 +1,19 @@
+<!-- 注册页面 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include header.ejs %>
+    <title>注册</title>
+</head>
+<body>
+    <div class="form-box">
+        <form action="/users/regist" method="POST">
+            <div>用户名：<input type="text" name="username" placeholder="请输入用户名..."></div>
+            <div>密码：<input type="password" name="password" placeholder="请输入密码..."></div>
+            <div>确认密码：<input type="password" name="confirmPassword" placeholder="请再次输入密码..."></div>
+            <button class="subBut" type="submit">注册</button>
+        </form>
+        <div>已有账号，<a href="/login">立即登录</a></div>
+    </div>
+</body>
+</html>
