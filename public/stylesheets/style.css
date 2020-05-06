@@ -18,3 +18,62 @@ a {
 .form-box div{
   margin: 20px 0;
 }
+
+.bar{
+  width: 1200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: auto;
+  background-color: darkgray;
+}
+
+.bar a img{
+  width: 40px;
+  height: 40px;
+}
+
+.bar .bar_right{
+  width: 200px;
+  height: auto;
+  text-align: center;
+  margin: auto 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bar .bar_right .username{
+  color: pink;
+}
+
+.bar .bar_right a{
+  text-decoration: none;
+  color: aqua;
+}
+
+.article{
+  width: 1200px;
+  height:auto;
+  margin: 10px auto;
+}
+
+.article form{
+  width: 800px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.article form input{
+  display: block;
+  margin: 10px auto;
+}
+.article form textarea{
+  display: block;
+  margin: 10px auto;
+}
+
+.article form button{
+  display: block;
+  margin: 10px auto;
+}

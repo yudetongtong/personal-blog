@@ -7,6 +7,7 @@ var session = require('express-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var articleRouter = require('./routes/article')
 
 var app = express();
 
@@ -32,7 +33,6 @@ app.use(session({
 app.get('*',(req,res,next)=>{
   let username = req.session.username
   let path = req.path
-  console.log('session', username)
   if(path != '/login' && '/regist'){
     if (!username) {
       res.redirect('/login')
@@ -43,6 +43,7 @@ app.get('*',(req,res,next)=>{
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/article',articleRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
