@@ -6,5 +6,27 @@
   </head>
   <body>
     <%- include('bar.ejs',{username}) %>
+
+    <div class="list">
+      <% totalData.list.map((item,index)=>{ %>
+        <div class="row">
+          <span><%= index+1 %></span>
+          <span><%= item.username %></span>
+          <span><%= item.title %></span>
+          <span><%= item.time %></span>
+          <span>
+            <a class="change" href="">编辑</a>
+            <a class="delete" href="">删除</a>
+          </span>
+        </div>
+      <% }) %>     
+    </div>
+
+    <div class="pages">
+      <% for(let i = 1; i<=totalData.total;i++){ %>
+        <a href='/?page=<%= i %>'> <%= i %> </a>
+      <% } %>
+    </div>
+
   </body>
 </html>
