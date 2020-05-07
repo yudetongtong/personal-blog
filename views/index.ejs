@@ -12,11 +12,11 @@
         <div class="row">
           <span><%= index+1 %></span>
           <span><%= item.username %></span>
-          <span><%= item.title %></span>
+          <span class="title"><%= item.title %></span>
           <span><%= item.time %></span>
           <span>
-            <a class="change" href="">编辑</a>
-            <a class="delete" href="">删除</a>
+            <a class="change" href="/write">编辑</a>
+            <a class="delete" href="#" onclick="delArticle(this)">删除</a>
           </span>
         </div>
       <% }) %>     
@@ -28,5 +28,21 @@
       <% } %>
     </div>
 
+    <script src="/xheditor/jquery/jquery-1.4.4.min.js"></script>
+    <script>
+      function delArticle(obj){    
+        let parentCon = obj.parentNode.parentNode
+        let title = parentCon.getElementsByClassName('title')[0].innerText
+
+        $.ajax({
+          url:'/article/delete',
+          type:'POST',
+          dataType: "json",
+          data:{title},
+          success:location.reload()
+        })
+      }
+
+    </script>
   </body>
 </html>

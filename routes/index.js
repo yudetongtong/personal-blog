@@ -14,13 +14,11 @@ router.get('/',function(req, res, next) {
     list:[]//当前页的文章列表
   }
 
-  let pageSize = 2 ;//每页请求两条数据
+  let pageSize = 8 ;//每页请求两条数据
 
   model.connectDb((db)=>{
     //第一步，查询所有文章
     db.collection('articles').find().toArray((err, ret) => {
-      console.log('文章列表', err)
-      
       totalData.total = Math.ceil(ret.length / pageSize) 
       //第二步，查询当前页的文章列表
       model.connectDb((db)=>{
