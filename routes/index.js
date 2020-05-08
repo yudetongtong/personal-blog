@@ -14,7 +14,7 @@ router.get('/',function(req, res, next) {
     list:[]//当前页的文章列表
   }
 
-  let pageSize = 8 ;//每页请求两条数据
+  let pageSize = 4 ;//每页请求两条数据
 
   model.connectDb((db)=>{
     //第一步，查询所有文章
@@ -23,10 +23,14 @@ router.get('/',function(req, res, next) {
       //第二步，查询当前页的文章列表
       model.connectDb((db)=>{
         db.collection('articles').find().sort({_id:-1}).limit(pageSize).skip((page-1)*pageSize).toArray((err,ret2)=>{
-          ret2.map((item, index) => {
-            item['time'] = moment(item.timeId).format('YYYY-MM-DD HH:mm:ss')
-          })
-          totalData.list = ret2
+          if( ret2.length == 0 ){
+            res.redirect('/?page='+((page-1))||1)
+          }else{
+            ret2.map((item, index) => {
+              item['time'] = moment(item.timeId).format('YYYY-MM-DD HH:mm:ss')
+            })
+            totalData.list = ret2
+          }     
           res.render('index', { username, title: "首页", totalData });
         })
       })

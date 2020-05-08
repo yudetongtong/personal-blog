@@ -26,7 +26,7 @@ app.use(session({
   secret: 'hj',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge:1000*60*5 }//指定session有效期
+  cookie: { maxAge:1000*60*10 }//指定session有效期
 }))
 
 //登录拦截

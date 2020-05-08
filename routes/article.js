@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs')
+//图片上传插件
+const multiparty = require('multiparty')
 const model = require('../model')
 
 router.post('/add',(req,res,next)=>{
@@ -35,4 +38,27 @@ router.post('/delete',(req,res,next)=>{
         })
     })
 })
+
+router.post('/upload',(req,res,next)=>{
+    let form = new multiparty.Form()
+    form.parse(req,(err,fields,files)=>{
+        if(err){
+            console.log(上传失败)
+        }else{
+            console.log('文件列表',files)
+            let file = files.filedata[0]
+
+            let rs = fs.createReadStream(file.path)
+            let newPath = '/uploads/' + file.originalFilename
+            let ws = fs.createWriteStream('./public'+newPath)
+            rs.pipe(ws)
+            ws.on('close',()=>{
+                console.log('文件上传成功')
+                res.send({err:"",msg:newPath})
+            })
+            
+        }
+    })
+})
+
 module.exports = router;
